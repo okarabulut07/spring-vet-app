@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+</head>
+<body>
+<div class="container">
+    <br>
+    <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+    <br>
+    <h1>
+        WELCOME TO VET
+    </h1>
+
+    <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+    </div>
+    <form  th:object="${animalForm}"  method="post" th:action="@{/addAnimal}"  cssClass="form" >
+
+        <input type="hidden" th:field="*{a_id}"/>
+		
+		<div class="form-group">
+            <label>Type</label>
+            <input type="text" class="form-control" th:field="*{type}" />
+        </div>
+		
+		<div class="form-group">
+            <label>Genus</label>
+            <input type="text" class="form-control" th:field="*{genus}" />
+        </div>
+		
+        <div class="form-group">
+            <label>Animal Name</label>
+            <input th:field="*{animal_name}" type="text" class="form-control"  />
+        </div>
+        
+        <div class="form-group">
+            <label>Description</label>
+            <input th:field="*{description}" type="text" class="form-control"  />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <br>
+
+    <footer>
+
+        <th:block th:include="fragments/footer :: footer"></th:block>
+
+    </footer>
+
+</div>
+</body>
+</html>

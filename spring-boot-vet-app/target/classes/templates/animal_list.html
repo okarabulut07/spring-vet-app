@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+</head>
+<body>
+<div class="container">
+    <br>
+    <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+    <br>
+
+
+
+
+    <h1>ALL ANIMAL LIST</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <th scope="row">#ID</th>
+        <th scope="row">Type</th>
+        <th scope="row">Genus</th>
+        <th scope="row">Name</th>
+        <th scope="row">Description</th>
+        </thead>
+        <tbody>
+            <tr th:each="animal : ${animalLists}">
+                <td th:text="${animal.a_id}"></td>
+                <td th:text="${animal.type}"></td>
+                <td th:text="${animal.genus}"></td>
+                <td th:text="${animal.animal_name}"></td>
+                <td th:text="${animal.description}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/updateAnimal/__${animal.a_id}__}"  role="button" >Update</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/deleteAnimal/__${animal.a_id}__}" role="button" >Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <a class="btn btn-primary" th:href="@{/addAnimalPage}"  role="button" >Add New Animal</a>
+    <br>
+
+    <nav aria-label="...">
+        <br>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+      <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <footer>
+        <th:block th:include="fragments/footer :: footer"></th:block>
+    </footer>
+
+</div>
+</body>
+</html>
